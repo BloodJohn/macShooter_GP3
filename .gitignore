@@ -1,3 +1,16 @@
+/Unity/*.csproj
+/Unity/*.sln
+*.unityproj
+*.pidb
+*.userprefs
+obj
+Library
+Temp
+/Unity/.DS_Store
+/Build/mobilecarsios/
+Telemetry
 
-/Library
-/Temp
+*.suo
+*.user
+_ReSharper*
+/Server/SunsetRacing.Web/bin
