@@ -36,7 +36,9 @@ public class FoeGenerator : MonoBehaviour {
 		newFoe.GetComponent<FoeController>().DeadFoePrefab = DeadFoePrefab;
 		newFoe.GetComponent<FoeController>().BarPoint = BarPoint;
 			
-		
+		if (maxDelay > minDelay*2) maxDelay -= 0.01f;
+			else if (minDelay > 0.1) minDelay -=0.01f;
+			
 		//yield приостановит выполнение Coroutine, пока WaitForSeconds не подождёт нужное количество секунд (заданное случайно)
 		yield return new WaitForSeconds( Random.Range( minDelay, maxDelay ) );
 		}

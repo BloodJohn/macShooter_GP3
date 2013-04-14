@@ -5,6 +5,8 @@ using System.Collections;
 
 public class FoeController : MonoBehaviour {
 	
+	static float minSpeed = 0.5f;
+	static float maxSpeed = 2f;
 	private float Speed;
 	public GameObject DeadFoePrefab;
 	public Transform BarPoint;
@@ -13,8 +15,11 @@ public class FoeController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//Задаём случайную скорость
-		Speed = Random.Range( .5f, 2f );
+		Speed = Random.Range( minSpeed, maxSpeed );
 		startTime = Time.time;
+		
+		if (maxSpeed < minSpeed*2) maxSpeed += 0.01f;
+				else minSpeed +=0.01f;
 	}
 	
 	// Update is called once per frame
@@ -23,13 +28,13 @@ public class FoeController : MonoBehaviour {
 		if (transform.position.z < BarPoint.position.z)
 		{
 			//Перемещаем врага вперёд, шатая его в бок по синусу, зависимому от общего количества времени в секундах
-			transform.Translate( Mathf.Cos( (Time.time - startTime) * 10 ) * 4, 0, Speed );
+			transform.Translate( 0, 0, Speed );
 			
 			if (transform.position.z >= BarPoint.position.z) Statistics.Queue++;
 		}
 		else 
 		{
-			transform.Translate( 0, Mathf.Cos( (Time.time - startTime) * 10 ) * 2, 0 );
+			transform.Translate( 0, Mathf.Cos( (Time.time - startTime) * 10 ), 0 );
 		}
 		
 		//Проверяем на удалённость от места создания. Если враг переместился дальше, чем на 300px, то он явно уже за камерой - время умирать
