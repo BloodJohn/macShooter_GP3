@@ -15,6 +15,8 @@ public class BallController : MonoBehaviour {
 	void Update () {
 		if ( transform.position.y < WallPoint.position.y ) //Проверяем, не упал ли шар (плейн с землёй находится в нуле)
 			Destroy( gameObject );	//Если да - удаляем
+		
+		rigidbody.AddForce(Vector3.down*100);
 	}
 	
 }

@@ -14,6 +14,17 @@ ModelImporter:
     100016: Box008
     100018: Box009
     100020: Box010
+    100022: Box013
+    100024: Box016
+    100026: Box027
+    100028: Box028
+    100030: Cylinder002
+    100032: Cylinder004
+    100034: Hamburger
+    100036: Line001
+    100038: Object
+    100040: scene
+    100042: Sphere002
     400000: Box001
     400002: Box002
     400004: Box003
@@ -25,6 +36,17 @@ ModelImporter:
     400016: Box008
     400018: Box009
     400020: Box010
+    400022: Box013
+    400024: Box016
+    400026: Box027
+    400028: Box028
+    400030: Cylinder002
+    400032: Cylinder004
+    400034: Hamburger
+    400036: Line001
+    400038: Object
+    400040: scene
+    400042: Sphere002
     2300000: Box001
     2300002: Box002
     2300004: Box003
@@ -35,6 +57,16 @@ ModelImporter:
     2300014: Box008
     2300016: Box009
     2300018: Box010
+    2300020: Box013
+    2300022: Box016
+    2300024: Box027
+    2300026: Box028
+    2300028: Cylinder002
+    2300030: Cylinder004
+    2300032: Hamburger
+    2300034: Line001
+    2300036: Object
+    2300038: Sphere002
     3300000: Box001
     3300002: Box002
     3300004: Box003
@@ -45,6 +77,16 @@ ModelImporter:
     3300014: Box008
     3300016: Box009
     3300018: Box010
+    3300020: Box013
+    3300022: Box016
+    3300024: Box027
+    3300026: Box028
+    3300028: Cylinder002
+    3300030: Cylinder004
+    3300032: Hamburger
+    3300034: Line001
+    3300036: Object
+    3300038: Sphere002
     4300000: Box002
     4300002: Box003
     4300004: Box004
@@ -55,6 +97,16 @@ ModelImporter:
     4300014: Box009
     4300016: Box010
     4300018: Box006
+    4300020: Box013
+    4300022: Line001
+    4300024: Box016
+    4300026: Object
+    4300028: Sphere002
+    4300030: Cylinder004
+    4300032: Box027
+    4300034: Box028
+    4300036: Cylinder002
+    4300038: Hamburger
     9500000: //RootNode
   materials:
     importMaterials: 1

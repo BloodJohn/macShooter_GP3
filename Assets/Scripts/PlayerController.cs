@@ -27,7 +27,8 @@ public class PlayerController : MonoBehaviour {
 				position, Random.rotationUniform ); //Создаём в заранее вычисленном нами положении и задаём ему случайное вращение
 			newBall.GetComponent<BallController>().WallPoint = WallPoint;
 			//Обращаемся к его физическому телу и задаём ему определённое ускорение
-			newBall.rigidbody.AddForce( (position - camera.transform.position).normalized * 3000, ForceMode.Acceleration );
+			newBall.rigidbody.AddForce( (position - camera.transform.position).normalized * 10000f, ForceMode.Acceleration );
+			newBall.rigidbody.AddTorque(Random.onUnitSphere*10);
 		}
 	}
 }
