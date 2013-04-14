@@ -6,11 +6,12 @@ using System.Collections;
 public class FoeController : MonoBehaviour {
 	
 	static float minSpeed = 0.5f;
-	static float maxSpeed = 2f;
+	static float maxSpeed = 1f;
 	private float Speed;
 	public GameObject DeadFoePrefab;
 	public Transform BarPoint;
 	private float startTime;
+	private int health = 3;
 	
 	// Use this for initialization
 	void Start () {
@@ -30,7 +31,12 @@ public class FoeController : MonoBehaviour {
 			//Перемещаем врага вперёд, шатая его в бок по синусу, зависимому от общего количества времени в секундах
 			transform.Translate( 0, 0, Speed );
 			
-			if (transform.position.z >= BarPoint.position.z) Statistics.Queue++;
+			if (transform.position.z >= BarPoint.position.z) 
+			{
+				Statistics.Queue++;
+				
+				if (!Statistics.isGameOver && Statistics.Queue>3) Statistics.isGameOver=true;
+			}
 		}
 		else 
 		{
