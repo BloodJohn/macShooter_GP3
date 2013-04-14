@@ -8,7 +8,8 @@ public class FoeGenerator : MonoBehaviour {
 	
 	public GameObject FoePrefab; //Префаб объекта врага
 	public GameObject DeadFoePrefab; //Префаб объекта, отвечающего за поведение при умирании врага
-	public Transform GeneratorPos; //Положение объекта, от которого мы будем отталкиваться при генерации
+	public Transform[] PointList;
+	
 	
 	// Use this for initialization
 	void Start () {
@@ -19,10 +20,13 @@ public class FoeGenerator : MonoBehaviour {
 	//Coroutine должен иметь тип IEnumerator
 	IEnumerator GenerateFoe()
 	{
+		Transform current = PointList[Random.Range(0, PointList.Length)];
+		
 		//Получаем позицию для генерации относительно объекта, который служит точкой, от которой нам стоит отталкиваться при генерации
-		Vector3 pos = GeneratorPos.position + Vector3.left * 20 + Vector3.right * Random.Range( 0f, 40f );
+		Vector3 pos = current.position + Vector3.left * 20 + Vector3.right * Random.Range( 0f, 40f );
+		Quaternion rot = current.rotation;
 		//Копируем в сцену нового врага из префаба с помощью Instantiate, задаём вычисленную позицию и поворот на 180 градусов
-		GameObject newFoe = (GameObject)Instantiate( FoePrefab, pos, Quaternion.Euler( 0, 180, 0 ) );
+		GameObject newFoe = (GameObject)Instantiate( FoePrefab, pos, rot );
 		//Передаём ему ссылку на префаб с поведением при смерти врага
 		newFoe.GetComponent<FoeController>().DeadFoePrefab = DeadFoePrefab;
 		//yield приостановит выполнение Coroutine, пока WaitForSeconds не подождёт нужное количество секунд (заданное случайно)
