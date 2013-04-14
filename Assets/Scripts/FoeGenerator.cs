@@ -10,6 +10,8 @@ public class FoeGenerator : MonoBehaviour {
 	public GameObject DeadFoePrefab; //Префаб объекта, отвечающего за поведение при умирании врага
 	public Transform[] PointList;
 	public Transform BarPoint;
+	private float minDelay = 0.5f;
+	private float maxDelay = 1.5f;
 	
 	
 	// Use this for initialization
@@ -33,8 +35,10 @@ public class FoeGenerator : MonoBehaviour {
 		//Передаём ему ссылку на префаб с поведением при смерти врага
 		newFoe.GetComponent<FoeController>().DeadFoePrefab = DeadFoePrefab;
 		newFoe.GetComponent<FoeController>().BarPoint = BarPoint;
+			
+		
 		//yield приостановит выполнение Coroutine, пока WaitForSeconds не подождёт нужное количество секунд (заданное случайно)
-		yield return new WaitForSeconds( Random.Range( 0.5f, 1.5f ) );
+		yield return new WaitForSeconds( Random.Range( minDelay, maxDelay ) );
 		}
 	}
 	
