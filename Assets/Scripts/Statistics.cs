@@ -17,13 +17,19 @@ public class Statistics : MonoBehaviour {
 		
 	}
 	
+	void Update()
+	{
+		if ( Input.GetMouseButtonDown( 0 ) && isGameOver )
+			RestartGame();
+	}
+	
 	// OnGUI вызывается в то время, когда необходимо прорисоват стандартное GUI Unity
 	void OnGUI () {
 		
 		if (isGameOver)
 		{
-			GUI.Label( new Rect( 200, 200, 300, 240 ), "Game Over!" );
-			GUI.Label( new Rect( 200, 240, 300, 280 ), "Score: " + Score.ToString() );
+			GUI.Label( new Rect( Screen.width/2 - 100, Screen.height/2 - 100, 300, 240 ), "Game Over!" );
+			GUI.Label( new Rect( Screen.width/2 - 100, Screen.height/2 - 140, 300, 280 ), "Score: " + Score.ToString() );
 		}
 		else
 		{
@@ -38,6 +44,6 @@ public class Statistics : MonoBehaviour {
 		Score = 0;
 		Queue = 0;
 		isGameOver = false;
-		Application.LoadLevel( Application.loadedLevelName );
+		Application.LoadLevel( "main" );
 	}
 }

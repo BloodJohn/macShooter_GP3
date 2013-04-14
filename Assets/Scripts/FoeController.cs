@@ -19,8 +19,8 @@ public class FoeController : MonoBehaviour {
 		Speed = Random.Range( minSpeed, maxSpeed );
 		startTime = Time.time;
 		
-		if (maxSpeed < minSpeed*2) maxSpeed += 0.01f;
-				else minSpeed +=0.01f;
+		if (maxSpeed < minSpeed*2) maxSpeed += 0.05f;
+				else minSpeed +=0.05f;
 	}
 	
 	// Update is called once per frame
@@ -35,7 +35,11 @@ public class FoeController : MonoBehaviour {
 			{
 				Statistics.Queue++;
 				
-				if (!Statistics.isGameOver && Statistics.Queue>3) Statistics.isGameOver=true;
+				if (!Statistics.isGameOver && Statistics.Queue>3)
+				{
+					Statistics.isGameOver=true;
+					Application.LoadLevel("gameover");
+				}
 			}
 		}
 		else 
@@ -54,12 +58,18 @@ public class FoeController : MonoBehaviour {
 		//относится ли объект, с которым мы столкнулись, к игроку (тэг можно задать в инспекторе)
 		if ( collision.collider.gameObject.tag == "Player" )
 		{
-			//Да! Враг убит!
-			if (transform.position.z >= BarPoint.position.z) Statistics.Queue--;
-			Statistics.Score++; //Обращаемся к статической переменной класса со статистикой
-			Instantiate( DeadFoePrefab ); //Создаём GameObject, отвечающий за смерть врага
-			Destroy( collision.collider.gameObject ); //Удаляем врага
-			Destroy( gameObject ); //Удаляем шар, которым столкнулись с врагом
+			health--;
+			if (health>0) 
+				transform.localScale *= Random.Range( 1.1f, 1.3f );
+			else
+			{
+				//Да! Враг убит!
+				if (transform.position.z >= BarPoint.position.z) Statistics.Queue--;
+				Statistics.Score++; //Обращаемся к статической переменной класса со статистикой
+				Instantiate( DeadFoePrefab ); //Создаём GameObject, отвечающий за смерть врага
+				Destroy( collision.collider.gameObject ); //Удаляем врага
+				Destroy( gameObject ); //Удаляем шар, которым столкнулись с врагом
+			}
 		}
 		
 	}
