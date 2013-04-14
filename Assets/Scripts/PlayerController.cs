@@ -6,6 +6,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 	
 	public GameObject BasketBall;
+	public Transform WallPoint;
 	
 	// Use this for initialization
 	void Start () {
@@ -24,8 +25,9 @@ public class PlayerController : MonoBehaviour {
 			GameObject newBall //Запоминаем в переменной newBall
 				= (GameObject)Instantiate( BasketBall, 
 				position, Random.rotationUniform ); //Создаём в заранее вычисленном нами положении и задаём ему случайное вращение
+			newBall.GetComponent<BallController>().WallPoint = WallPoint;
 			//Обращаемся к его физическому телу и задаём ему определённое ускорение
-			newBall.rigidbody.AddForce( Vector3.forward * 3000, ForceMode.Acceleration );
+			newBall.rigidbody.AddForce( (position - camera.transform.position).normalized * 3000, ForceMode.Acceleration );
 		}
 	}
 }

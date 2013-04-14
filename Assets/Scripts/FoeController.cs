@@ -6,15 +6,13 @@ using System.Collections;
 public class FoeController : MonoBehaviour {
 	
 	private float Speed;
-	private Vector3 StartPosition;
 	public GameObject DeadFoePrefab;
+	public Transform BarPoint;
 	
 	// Use this for initialization
 	void Start () {
 		//Задаём случайную скорость
 		Speed = Random.Range( .5f, 2f );
-		//Запоминаем положение на старте
-		StartPosition = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -23,7 +21,7 @@ public class FoeController : MonoBehaviour {
 		transform.Translate( Mathf.Cos( Time.time * 10 ) * 2, 0, Speed );
 		
 		//Проверяем на удалённость от места создания. Если враг переместился дальше, чем на 300px, то он явно уже за камерой - время умирать
-		if ( Vector3.Distance( transform.position, StartPosition ) > 300 )
+		if ( transform.position.z > BarPoint.position.z )
 			Destroy( gameObject );
 	}
 	

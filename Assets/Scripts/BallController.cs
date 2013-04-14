@@ -4,6 +4,8 @@ using System.Collections;
 
 public class BallController : MonoBehaviour {
 	
+	public Transform WallPoint;
+	
 	// Use this for initialization
 	void Start () {
 	
@@ -11,7 +13,7 @@ public class BallController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if ( transform.position.y < 0 ) //Проверяем, не упал ли шар (плейн с землёй находится в нуле)
+		if ( transform.position.y < WallPoint.position.y ) //Проверяем, не упал ли шар (плейн с землёй находится в нуле)
 			Destroy( gameObject );	//Если да - удаляем
 	}
 	
